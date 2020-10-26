@@ -1,6 +1,5 @@
 var repoContainerEl = document.querySelector("#repos-container");
 var repoSearchTerm = document.querySelector("#repo-search-term");
-//captures and stores changes to the div holding the language buttons
 var languageButtonsEl = document.querySelector("#language-buttons");
 
 var getFeaturedRepos = function (language) {
@@ -37,7 +36,6 @@ var getUserRepos = function (user) {
       }
     })
     .catch(function (error) {
-      // Notice this `.catch()` getting chained onto the end of the `.then()` method
       alert("Unable to connect to GitHub");
     });
 };
@@ -46,7 +44,6 @@ var userFormEl = document.querySelector("#user-form");
 var nameInputEl = document.querySelector("#username");
 
 var formSubmitHandler = function (event) {
-  console.log("formSubmitHandler -> event", event);
   event.preventDefault();
   // get value from input element
   var username = nameInputEl.value.trim();
@@ -77,7 +74,7 @@ var displayRepos = function (repos, searchTerm) {
     // format repo name
     var repoName = repos[i].owner.login + "/" + repos[i].name;
 
-    // create a link for each repo
+    // create a container for each repo
     var repoEl = document.createElement("a");
     repoEl.classList = "list-item flex-row justify-space-between align-center";
     repoEl.setAttribute("href", "./single-repo.html?repo=" + repoName);
